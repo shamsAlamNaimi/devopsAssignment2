@@ -15,6 +15,7 @@ namespace server
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,7 +25,17 @@ namespace server
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+        {   
+            
+            services.AddCors(options =>
         {
+            options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.WithOrigins("http://example.com",
+                                        "http://www.contoso.com","http://localhost:3000");
+                });
+        });
             services.AddControllers();
         }
 
@@ -37,6 +48,8 @@ namespace server
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseRouting();
 
