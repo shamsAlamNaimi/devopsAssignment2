@@ -3,15 +3,18 @@ import Paper from '@material-ui/core/Paper'
 import ReactMarkdown from 'react-markdown'
 import 'github-markdown-css'
 import  { useState, useEffect } from 'react';
+import logo from '../../img/wcmt.jpg';
 
 const Wcmt = () => {
     const [markdown, setmarkdown] = React.useState("no data found");
+    const [songname, setsongname] = React.useState("no song found");
     useEffect(() => {
         fetch("https://localhost:5001/Wcmt")
         .then(function(response) {
           return response.json();
         })
-        .then(res=> setmarkdown(res.data))
+        .then(res=> {setmarkdown(res.data); 
+                      setsongname(res.songName)})
         .catch((err)=>console.log("error"));
       }, [])
   
@@ -19,6 +22,8 @@ const Wcmt = () => {
   return (
     <Paper>
         <div style={{ backgroundColor: 'white', padding: 90 }}>
+        <img src={logo} style={{display: 'block',marginLeft: 'auto', marginRight: 'auto',width: '50%'}} alt="" /> <br />
+        <h2>{songname}</h2>
         <ReactMarkdown
             className="markdown-body"
             source={markdown}
