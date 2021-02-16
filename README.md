@@ -2,7 +2,7 @@
 
 this is the assignemnt 3 of the devops class, in this we have created a dotnet webapi have 2 different froentend appications
 
-# installing the app
+# cloning the app
   clone all the 3 folder in the local computer
 
 # installation 
