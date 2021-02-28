@@ -9,6 +9,10 @@ this is the assignemnt 3 of the devops class, in this we have created a dotnet w
  dotnet - dotnet build
  react - npm install 
  
+# running
+dotnet - dotnet run
+react- npm start
+
 # Adding a new package
 
 Dotnet add {packageName}
